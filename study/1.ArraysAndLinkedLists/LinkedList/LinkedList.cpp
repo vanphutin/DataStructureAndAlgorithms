@@ -6,6 +6,8 @@ node* makeNode(int x);
 void duyet(node *head);
 int dem(node *head);
 void themNode(node **head, int x);
+void soChan(node *head);
+int timGiaTriLonNhat(node *head);
 
 int main(){
 	node *head = NULL;
@@ -14,9 +16,10 @@ int main(){
 	}
 	duyet(head);
 	cout<<"\nsize: "<<dem(head);
+	soChan(head);
+	cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
 	return 0;
 }
-
 
 //ham tao node moi
 struct node{
@@ -58,4 +61,31 @@ void themNode(node **head, int x){
 	// buoc 2 : cap nhat node *head->newNode
 	*head = newNode;
 }
+
+//in so chan
+void soChan(node *head){
+	cout<<"\nCac so chan la: ";
+	while(head != NULL){
+		if(head->data % 2 == 0){
+			cout<<head->data<<' ';
+			
+		}
+		head = head->next;
+		
+	}
+}
+
+//tim gia tri lon nhat
+int timGiaTriLonNhat(node *head){
+	int flag = 0;
+	while(head != NULL){
+		if(head->data > flag){
+			flag = head->data ;
+		}
+		head = head->next;
+	}
+	return flag;
+}
+
+
 
