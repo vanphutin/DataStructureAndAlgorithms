@@ -21,11 +21,11 @@ int main(int argc, char** argv) {
     cout << "Nhap so luong phan tu trong mang (> 0): ";
     cin >> n;
     
-    nhap(a, n); 
-    xuat(a,n);
+      nhap(a, n); 
+      xuat(a,n);
     xuatChan(a,n);
-    cout<<tinhTongChan(a,n);
-    cout<<timGiaTriLonNhat(a,n);
+      cout<<tinhTongChan(a,n);
+      cout<<timGiaTriLonNhat(a,n);
     kiemTraTinhKhongGiam(a,n);
 	chen( a,n,x,k);
 	xoaPhanTu(a, n, xoa);
