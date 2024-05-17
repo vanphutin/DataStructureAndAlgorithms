@@ -3,40 +3,41 @@ typedef struct node node; // cho phep su dung node thay vi struct node
 using namespace std;
 
 node* taoNode(int x);
+
+void nhap_front(node **head);
+void themNode_front(node **head, int x);
+void themNode_middle(node **head, int k, int x);//void nhap_middle(node **head);
+void nhap_back(node **head);
+void themNode_back(node **head, int x);
+
 void duyet(node *head);
 int dem(node *head);
-void themNode_front(node **head, int x);
 void soChan(node *head);
 int timGiaTriLonNhat(node *head);
-void nhap_front(node **head);
-void themNode_back(node **head, int x);
-void nhap_back(node **head);
 void chinhPhuong(node *head);
+void tanSuat(node *head);
+void xoaPT_Trung(node *head);
 
 int main(int argc, char** argv){
 	node *head = NULL;
+	int k,x;
 	  nhap_front(&head);
+	duyet(head);
+	  themNode_middle(&head,k,x);
+//	  nhap_middle(&head);
+	duyet(head);
 	  nhap_back(&head);
 	duyet(head);
 	  cout<<"\nsize: "<<dem(head);
 	soChan(head);
 	  cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
 	  chinhPhuong(head);
+	  tanSuat(head);
+	  xoaPT_Trung(head);
 	return 0;
 }
 
-//ham nhap
-void nhap_front(node **head){
-    int n;
-    cout << "Nhap so luong node can them vao dau DSLK: ";
-    cin >> n;
-    for(int i = 0; i < n; i++){
-        int data;
-        cout << "Nhap phan tu thu " << i + 1 << ": ";
-        cin >> data;
-        themNode_front(head, data);
-    }
-}
+
 
 //ham tao node moi
 struct node{
@@ -52,11 +53,81 @@ node* taoNode(int x){
 	return newNode;
 }
 
+//=================================================================================
+//ham them node vao dau danh sach
+void nhap_front(node **head){
+    int n;
+    cout << "Nhap so luong node can them vao dau DSLK: ";
+    cin >> n;
+    for(int i = 0; i < n; i++){
+        int data;
+        cout << "Nhap phan tu thu " << i + 1 << ": ";
+        cin >> data;
+        themNode_front(head, data);
+    }
+}
+void themNode_front(node **head, int x){
+	node *nodeMoi = taoNode(x); //xin cap phat them 
+	// buoc 1 : cho phan next cua newNode -> *head 
+	nodeMoi->next = *head; //*head => dia chi cua node trong dslk
+	// buoc 2 : cap nhat node *head->newNode
+	*head = nodeMoi;
+}
+
+//=================================================================================
+// them node vao giua danh sach
+void themNode_middle(node **head, int k, int x) {
+    int a,n = dem(*head);
+    cout<<"\nNhap node can chen vao giua DSLK: "; cin>>a;
+    cout << "\nNhap vi tri chen vao giua DSLK: ";
+    cin >> k;
+    if (k < 1 || k > n + 1) {
+        cout << "Vi tri khong hop le!\n";
+        return;
+    }
+    if (k == 1) {
+        themNode_front(head, x);
+        return;
+    }
+    node *temp = *head;
+    for (int i = 1; i < k - 1; i++) {
+        temp = temp->next;
+    }
+    node *nodeMoi = taoNode(x);
+    nodeMoi->next = temp->next;
+    temp->next = nodeMoi;
+}
+
+
+//=================================================================================
+// them node vao cuoi danh sach
+void nhap_back(node **head){
+	int n;
+	cout<<"\nNhap so luong node can them vao cuoi DSLK: "; cin>>n;
+	for(int i = 0 ; i<n ; i++){
+		int data;
+		cout<<"Nhap phan tu thu "<<i+1<<": "; cin>>data;
+		themNode_back(head,data);
+	}
+}
+void themNode_back(node **head, int x){
+	node *temp = *head;
+	node *nodeMoi = taoNode(x);
+	if(*head == NULL){
+		*head = nodeMoi;
+		return;
+	}
+	while(temp->next != NULL){
+		temp = temp->next;
+	}
+	temp->next = nodeMoi;
+}
+
 //ham duyet node 
 void duyet(node *head){
-	cout<<"Cac phan tu trong DSLK: ";
+	cout<<"\nCac phan tu trong DSLK: ";
 	while(head != NULL){
-		cout<<head->data<<' ';
+		cout<<" | "<<head->data<<" | ";
 		head = head->next; // dia chi cua node tiep theo 
 	}
 }
@@ -71,14 +142,6 @@ int dem(node *head){
 	return count;
 }
 
-//ham them node vao dau danh sach
-void themNode_front(node **head, int x){
-	node *nodeMoi = taoNode(x); //xin cap phat them 
-	// buoc 1 : cho phan next cua newNode -> *head 
-	nodeMoi->next = *head; //*head => dia chi cua node trong dslk
-	// buoc 2 : cap nhat node *head->newNode
-	*head = nodeMoi;
-}
 
 //in so chan khong bi trung gia tri
 void soChan(node *head){
@@ -97,7 +160,6 @@ void soChan(node *head){
 	}
 }
 
-
 //tim gia tri lon nhat
 int timGiaTriLonNhat(node *head){
 	int flag = 0;
@@ -108,31 +170,6 @@ int timGiaTriLonNhat(node *head){
 		head = head->next;
 	}
 	return flag;
-}
-
-//========================================
-// them node vao cuoi danh sach
-void nhap_back(node **head){
-	int n;
-	cout<<"\nNhap sao luong node can them vao cuoi DSLK: "; cin>>n;
-	for(int i = 0 ; i<n ; i++){
-		int data;
-		cout<<"Nhap phan tu thu "<<i+1<<": "; cin>>data;
-		themNode_back(head,data);
-	}
-}
-
-void themNode_back(node **head, int x){
-	node *temp = *head;
-	node *nodeMoi = taoNode(x);
-	if(*head == NULL){
-		*head = nodeMoi;
-		return;
-	}
-	while(temp->next != NULL){
-		temp = temp->next;
-	}
-	temp->next = nodeMoi;
 }
 
 //tim so chinh phuong 
@@ -152,5 +189,39 @@ void chinhPhuong(node *head){
 	}
 }
 
+// tan suat xuat hien
+void tanSuat(node *head){
+	cout<<"\nTAN SUAT XUAT HIEN\n";
+	//dem tan suat
+	int max_val = timGiaTriLonNhat(head);
+	 int *danhDau = new int[max_val + 1]();
+	node *current = head;
+    while (current != NULL) {
+        danhDau[current->data]++;
+        current = current->next;
+    }
+    for (int i = 0; i <= max_val; i++) {
+        if (danhDau[i] > 0) {
+            cout<<"\t"<<i<<" xuat hien " << danhDau[i] << " lan\n";
+        }
+    }
 
+    delete[] danhDau;
+}
 
+// xoa cac phan tu trung
+void xoaPT_Trung(node *head){
+	cout<<"Xoa cac phan tu trung trong DSLK : ";
+	int danhDau[1001] = {false};
+	if(head == NULL){
+		cout<<"\nDanh sach lien ket rong !."<<endl;
+		return;
+	}
+	while(head != NULL){
+		if(!danhDau[head->data]){
+			cout<<head->data<<' ';
+			danhDau[head->data] = true;
+		}
+		head = head->next;
+	}
+}
