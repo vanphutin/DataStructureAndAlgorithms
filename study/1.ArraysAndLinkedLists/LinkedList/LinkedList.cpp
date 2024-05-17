@@ -6,7 +6,8 @@ node* taoNode(int x);
 
 void nhap_front(node **head);
 void themNode_front(node **head, int x);
-void themNode_middle(node **head, int k, int x);//void nhap_middle(node **head);
+void nhap_middle(node **head);
+void themNode_middle(node **head, int k, int x);
 void nhap_back(node **head);
 void themNode_back(node **head, int x);
 
@@ -23,8 +24,7 @@ int main(int argc, char** argv){
 	int k,x;
 	  nhap_front(&head);
 	duyet(head);
-	  themNode_middle(&head,k,x);
-//	  nhap_middle(&head);
+	    nhap_middle(&head);
 	duyet(head);
 	  nhap_back(&head);
 	duyet(head);
@@ -67,20 +67,25 @@ void nhap_front(node **head){
     }
 }
 void themNode_front(node **head, int x){
-	node *nodeMoi = taoNode(x); //xin cap phat them 
-	// buoc 1 : cho phan next cua newNode -> *head 
-	nodeMoi->next = *head; //*head => dia chi cua node trong dslk
-	// buoc 2 : cap nhat node *head->newNode
+	node *nodeMoi = taoNode(x);
+	nodeMoi->next = *head;
 	*head = nodeMoi;
 }
 
+
 //=================================================================================
 // them node vao giua danh sach
+void nhap_middle(node **head) {
+    int x, k;
+    cout<<"\nNhap node can chen vao giua DSLK: "; 
+    cin>>x;
+    cout<< "Nhap vi tri chen vao giua DSLK: "; 
+    cin>> k;
+    themNode_middle(head, k, x);
+}
+
 void themNode_middle(node **head, int k, int x) {
-    int a,n = dem(*head);
-    cout<<"\nNhap node can chen vao giua DSLK: "; cin>>a;
-    cout << "\nNhap vi tri chen vao giua DSLK: ";
-    cin >> k;
+    int n = dem(*head);
     if (k < 1 || k > n + 1) {
         cout << "Vi tri khong hop le!\n";
         return;
@@ -90,14 +95,13 @@ void themNode_middle(node **head, int k, int x) {
         return;
     }
     node *temp = *head;
-    for (int i = 1; i < k - 1; i++) {
+    for (int i = 1; i < k - 2; i++) {
         temp = temp->next;
     }
     node *nodeMoi = taoNode(x);
     nodeMoi->next = temp->next;
     temp->next = nodeMoi;
 }
-
 
 //=================================================================================
 // them node vao cuoi danh sach
@@ -110,6 +114,7 @@ void nhap_back(node **head){
 		themNode_back(head,data);
 	}
 }
+
 void themNode_back(node **head, int x){
 	node *temp = *head;
 	node *nodeMoi = taoNode(x);
@@ -122,6 +127,8 @@ void themNode_back(node **head, int x){
 	}
 	temp->next = nodeMoi;
 }
+
+
 
 //ham duyet node 
 void duyet(node *head){
