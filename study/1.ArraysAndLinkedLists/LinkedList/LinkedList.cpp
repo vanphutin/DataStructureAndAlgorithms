@@ -20,20 +20,81 @@ void tanSuat(node *head);
 void xoaPT_Trung(node *head);
 
 int main(int argc, char** argv){
+	int lc ;
 	node *head = NULL;
 	int k,x;
-	  nhap_front(&head);
-	duyet(head);
-	    nhap_middle(&head);
-	duyet(head);
-	  nhap_back(&head);
-	duyet(head);
-	  cout<<"\nsize: "<<dem(head);
-	soChan(head);
-	  cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
-	  chinhPhuong(head);
-	  tanSuat(head);
-	  xoaPT_Trung(head);
+	bool continueLoop = true;
+	while(continueLoop){
+		cout<<"=========================="<<endl;
+	cout<<"1.Them node vao dau DSLK.\n";
+	cout<<"2.Chen node vao giua DSLK.\n";
+	cout<<"3.Them node vao cuoi DSLK.\n";
+	cout<<"4.In ra so luong phan tu DSLK.\n";
+	cout<<"5.In ra so chan trong DSLK.\n";
+	cout<<"6.In ra so gia tri lon nhat trong DSLK.\n";
+	cout<<"7.In ra so chinh phuong trong DSLK.\n";
+	cout<<"8.In ra tan so suat hien DSLK.\n";
+	cout<<"9.In ra danh sach cac phan tu (khong bi trung) trong DSLK.\n";
+	cout<<"0.Thoat!";
+	cout<<"\n==========================";
+	cout<<"\nNhap lua chon: "; cin>>lc;
+	
+	switch(lc){
+	case 1:{
+		nhap_front(&head);
+		duyet(head);
+		break;
+	}
+	case 2:{
+		nhap_middle(&head);
+		duyet(head);
+		break;
+	}
+	case 3:{
+		nhap_back(&head);
+		duyet(head);
+		break;
+	}
+	case 4:{
+		cout<<"\nsize: "<<dem(head);
+		break;
+	}
+	case 5:{
+		soChan(head);
+		break;
+ 	}
+ 	case 6 :{
+ 		cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
+		break;
+	 }
+	 case 7 :{
+	 	chinhPhuong(head);
+		break;
+	 }
+	 case 8 :{
+	 	tanSuat(head);
+		break;
+	 }
+	 case 9 :{
+	 	xoaPT_Trung(head);
+		break;
+	 }
+	 default:
+	 	cout<<"Thoat !(Enter)"<<endl;
+		break;
+	 
+	}
+		if (continueLoop) {
+			char choice;
+			cout << "\nBan muon tiep tuc? (Y/N): ";
+			cin >> choice;
+			if (choice != 'Y' && choice != 'y') {
+				continueLoop = false;
+			}
+		}
+	}
+	
+
 	return 0;
 }
 
