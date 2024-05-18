@@ -11,6 +11,9 @@ void themNode_middle(node **head, int k, int x);
 void nhap_back(node **head);
 void themNode_back(node **head, int x);
 
+void xoaNode_Dau(node **head);
+void xoaNode_Cuoi(node **head);
+
 void duyet(node *head);
 int dem(node *head);
 void soChan(node *head);
@@ -26,75 +29,85 @@ int main(int argc, char** argv){
 	bool continueLoop = true;
 	while(continueLoop){
 		cout<<"=========================="<<endl;
-	cout<<"1.Them node vao dau DSLK.\n";
-	cout<<"2.Chen node vao giua DSLK.\n";
-	cout<<"3.Them node vao cuoi DSLK.\n";
-	cout<<"4.In ra so luong phan tu DSLK.\n";
-	cout<<"5.In ra so chan trong DSLK.\n";
-	cout<<"6.In ra so gia tri lon nhat trong DSLK.\n";
-	cout<<"7.In ra so chinh phuong trong DSLK.\n";
-	cout<<"8.In ra tan so suat hien DSLK.\n";
-	cout<<"9.In ra danh sach cac phan tu (khong bi trung) trong DSLK.\n";
-	cout<<"0.Thoat!";
-	cout<<"\n==========================";
-	cout<<"\nNhap lua chon: "; cin>>lc;
+		cout<<"1.Them node vao dau DSLK.\n";
+		cout<<"2.Chen node vao giua DSLK.\n";
+		cout<<"3.Them node vao cuoi DSLK.\n";
+		cout<<"4.Xoa node dau DSLK.\n";
+		cout<<"5.Xoa node cuoi DSLK.\n";
+		cout<<"6.In ra so luong phan tu DSLK.\n";
+		cout<<"7.In ra so chan trong DSLK.\n";
+		cout<<"8.In ra so gia tri lon nhat trong DSLK.\n";
+		cout<<"9.In ra so chinh phuong trong DSLK.\n";
+		cout<<"10.In ra tan so suat hien DSLK.\n";
+		cout<<"11.In ra danh sach cac phan tu (khong bi trung) trong DSLK.\n";
+		cout<<"0.Thoat!";
+		cout<<"\n==========================";
+		cout<<"\nNhap lua chon: "; cin>>lc;
 	
 	switch(lc){
-	case 1:{
-		nhap_front(&head);
-		duyet(head);
-		break;
-	}
-	case 2:{
-		nhap_middle(&head);
-		duyet(head);
-		break;
-	}
-	case 3:{
-		nhap_back(&head);
-		duyet(head);
-		break;
-	}
-	case 4:{
-		cout<<"\nsize: "<<dem(head);
-		break;
-	}
-	case 5:{
-		soChan(head);
-		break;
- 	}
- 	case 6 :{
- 		cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
-		break;
-	 }
-	 case 7 :{
-	 	chinhPhuong(head);
-		break;
-	 }
-	 case 8 :{
-	 	tanSuat(head);
-		break;
-	 }
-	 case 9 :{
-	 	xoaPT_Trung(head);
-		break;
-	 }
-	 default:
-	 	cout<<"Thoat !(Enter)"<<endl;
-		break;
-	 
-	}
-		if (continueLoop) {
-			char choice;
-			cout << "\nBan muon tiep tuc? (Y/N): ";
-			cin >> choice;
-			if (choice != 'Y' && choice != 'y') {
-				continueLoop = false;
-			}
+		case 1:{
+			nhap_front(&head);
+			duyet(head);
+			break;
 		}
+		case 2:{
+			nhap_middle(&head);
+			duyet(head);
+			break;
+		}
+		case 3:{
+			nhap_back(&head);
+			duyet(head);
+			break;
+		}
+		case 4:{
+			xoaNode_Dau(&head);
+			duyet(head);
+			break;
+		}
+		case 5:{
+			xoaNode_Cuoi(&head);
+			duyet(head);
+			break;
+		}
+		case 6:{
+			cout<<"\nsize: "<<dem(head);
+			break;
+		}
+		case 7:{
+			soChan(head);
+			break;
+	 	}
+	 	case 8 :{
+	 		cout<<"\nGia tri lon nhat trong danh sach la: "<<timGiaTriLonNhat(head);
+			break;
+		 }
+		 case 9 :{
+		 	chinhPhuong(head);
+			break;
+		 }
+		 case 10:{
+		 	tanSuat(head);
+			break;
+		 }
+		 case 11 :{
+		 	xoaPT_Trung(head);
+			break;
+		 }
+		 default:
+		 	cout<<"Thoat !(Enter)"<<endl;
+			break;
+		 
+		}
+			if (continueLoop) {
+				char choice;
+				cout << "\n\nBan muon tiep tuc? (Y/N): ";
+				cin >> choice;
+				if (choice != 'Y' && choice != 'y') {
+					continueLoop = false;
+				}
+			}
 	}
-	
-
 	return 0;
 }
 
@@ -189,11 +202,45 @@ void themNode_back(node **head, int x){
 	temp->next = nodeMoi;
 }
 
+//=================================================================================
+// XOA node dau va cuoi danh sach
+void xoaNode_Dau(node **head){
+	//kiem tra isNull
+	if(*head == NULL){
+		cout<<"\nDanh sach lien ket rong !."<<endl;
+		return;
+	}
+	node *temp = *head;
+	*head = temp->next;
+	delete temp;
+}
+void xoaNode_Cuoi(node **head){
+	if(*head == NULL){
+		cout<<"\nDanh sach lien ket rong !."<<endl;
+		return;
+	}
+	node *temp = *head;
+	if(temp->next == NULL){
+		*head = NULL;
+		delete temp;
+		return;
+	}
+	while(temp->next->next != NULL){
+		temp = temp->next;
+	}
+	node *cuoi = temp->next;
+	temp->next = NULL;
+	delete cuoi;
+}
 
 
+//=============================== BAI TAP ============================================
 //ham duyet node 
 void duyet(node *head){
-	cout<<"\nCac phan tu trong DSLK: ";
+	if(head == NULL){
+		return;
+	}
+	cout<<"Cac phan tu trong DSLK: ";
 	while(head != NULL){
 		cout<<" | "<<head->data<<" | ";
 		head = head->next; // dia chi cua node tiep theo 
