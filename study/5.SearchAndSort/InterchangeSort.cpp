@@ -20,11 +20,15 @@ void xuat(int a[],int n){
 		cout<<a[i]<<" ";
 	}
 }
-void BubbleSort(int a[],int n){
+
+
+void InterchangeSort(int a[],int n){
 	int temp = 0;
+
 	for(int i = 0 ; i < n ; i++){
 		for(int j = i + 1 ; j < n ; j++){
 			if(a[i] > a[j]){
+				//hoan doi vi tri cac phan tu
 				temp = a[i];
 				a[i] = a[j];
 				a[j] = temp;
@@ -35,9 +39,9 @@ void BubbleSort(int a[],int n){
 }
 int main(){
 	int a[10001], n;
-	cout << "Nhap so luong phan tu trong mang (> 0): ";
+	cout << "Nhap so luong phan tu trong mang : ";
     cin >> n;
     nhap(a,n);
-    BubbleSort(a,n);
+    InterchangeSort(a,n);
 	
 }
