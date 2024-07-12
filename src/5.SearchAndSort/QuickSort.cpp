@@ -1,6 +1,5 @@
 #include <iostream>
 
-// Hàm hoán d?i hai giá tr?
 void swap(int& a, int& b) {
     int temp = a;
     a = b;
