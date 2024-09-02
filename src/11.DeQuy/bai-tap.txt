@@ -1,0 +1,6 @@
+cho 6 so A0 -> A5
+sau do nhap 1 so x . hay xem x trung voi a may
+vd " 5 6 7 45 
+	x = 6, x trung a0
+
+b2.tinh tong cac so o vi tru chan
