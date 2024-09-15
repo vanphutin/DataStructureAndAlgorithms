@@ -33,7 +33,7 @@ void interchange_sort(int a[],int n){
 int main(){
     int a[100001], n;
     nhap_mang(a, n);
-    interchange_sort(a,n);
+    insertion_sort(a,n);
     return 0;
 }
 
