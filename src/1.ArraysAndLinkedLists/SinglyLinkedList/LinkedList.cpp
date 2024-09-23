@@ -9,7 +9,7 @@ struct Node{
 typedef Node *List;
 
 void insertFirst(int x, List &F){
-	List p = new(Node);
+	List p = new (Node);
 	p->data = x;
 	p->Next = NULL;
 	if(F == NULL){
