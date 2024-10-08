@@ -1,6 +1,13 @@
 Dưới đây là tổng hợp toàn bộ kiến thức về **cấu trúc dữ liệu** và **giải thuật**, bao gồm các khái niệm cơ bản và nâng cao mà bạn cần nắm vững để chuẩn bị cho các bài thi **coding interview** của các công ty lớn như **Google**, **Meta (Facebook)**, **Amazon**, và các công ty công nghệ khác.
 
 ---
+### **0. Cơ bản ( Map, và Set )**
+
+#### **0.1. Map:**
+   - **Map là một cấu trúc dữ liệu cho phép bạn lưu trữ các cặp khóa-giá trị. Khác với các đối tượng (objects), Map cho phép bất kỳ kiểu dữ liệu nào (bao gồm cả đối tượng) làm khóa. Thứ tự của các cặp khóa-giá trị trong Map được bảo toàn.**
+
+#### **0.2. Set:**
+   - **Set là một cấu trúc dữ liệu cho phép bạn lưu trữ các giá trị duy nhất. Điều này có nghĩa là không có giá trị nào bị lặp lại. Set cũng bảo toàn thứ tự của các phần tử.**
 
 ### **1. Cấu Trúc Dữ Liệu (Data Structures):**
 
