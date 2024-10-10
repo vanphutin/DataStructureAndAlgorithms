@@ -2,15 +2,15 @@
 
 using namespace std;
 
-struct person {
+struct node {
     int pData;
-    person* Next, *Prev;
+    node* Next, *Prev;
 };
 
-typedef person* List;
+typedef node* List;
 
 void insertFirst(List& F, List& L, int data) {
-    List q = new person;
+    List q = new node;
     q->pData = data;
     q->Next = F;
     q->Prev = NULL;
@@ -23,7 +23,7 @@ void insertFirst(List& F, List& L, int data) {
 }
 
 void insertLast(List& F, List& L, int data) {
-    List q = new person;
+    List q = new node;
     q->pData = data;
     q->Next = NULL;
     q->Prev = L;
@@ -62,6 +62,7 @@ void delLast(List& F, List& L) {
 void delValue(List& F, List& L, int K) {
     List p = F;
     while (p != NULL) {
+        List next = p->Next; 
         if (p->pData == K) {
             if (p == F) {
                 delFirst(F, L);
@@ -73,9 +74,10 @@ void delValue(List& F, List& L, int K) {
                 delete p;
             }
         }
-        p = p->Next;
+        p = next; 
     }
 }
+
 
 void sortList(List& F, List& L) {
     bool swapped = true;
