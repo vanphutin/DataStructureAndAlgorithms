@@ -1,59 +1,32 @@
 #include <iostream>
-
 using namespace std;
 
-// Define node structure
-struct node {
+struct node{
 	int data;
-	node *left;
-	node *right;
+	node *left, *right;
 };
 
-// Create a new node
-node *makeNode(int x){
-	node *newNode = new node;
-	newNode->data = x;
-	newNode->left = NULL;
-	newNode->right = NULL;
-	return newNode;
+typedef node* Tree;
+
+Tree createNode(int x){
+	Tree p = new node;
+	p->data = x;
+	p->left = NULL;
+	p->right = NULL;
+	return p;
 }
 
-void inorder(node *root){
-	if(root != NULL){
-		inorder(root->left);       // Traverse the left subtree
-		cout << root->data << " "; // Print the current node's data
-		inorder(root->right);      // Traverse the right subtree
-	}
-}
-
-// tim node lon nhat
-
-int findMax(node *root){
+void insert(int x, Tree &root){
 	if(root == NULL){
-		cout<<"invalid"<<endl;
-		return -1;
+		root = createNode(x);
+	}else if(x < root->data){
+		insert(x,root->left);
+	}else{
+		insert(x, root->right);
 	}
-	node* current = root;
-	while(current->right != NULL){
-		current = current->right;
-	}
-	return current->data;
 }
 
-int main(){
-    // Create a sample tree
-    node *root = makeNode(10);
-    root->left = makeNode(5);
-    root->right = makeNode(20);
-    root->left->left = makeNode(3);
-    root->left->right = makeNode(7);
-
-    // Inorder traversal
-    cout << "Inorder traversal: ";
-    inorder(root);
-    cout<<"\nMAX"<<findMax(root);
-    cout << endl;
-
-    return 0;
+void inorder(Tree root){
+	
 }
 
