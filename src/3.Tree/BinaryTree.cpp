@@ -26,7 +26,47 @@ void insert(int x, Tree &root){
 	}
 }
 
-void inorder(Tree root){
+void inorder(Tree root){ // Left - Node - Right
+	if(root != NULL){
+		inorder(root->left);
+		cout<<root->data<<" ";
+		inorder(root->right);
+	}
+}
+
+void preorder(Tree root){ // Node - Left - Right
+	if(root != NULL){
+		cout<<root->data<<" ";
+		preorder(root->left);
+		preorder(root->right);
+	}
+}
+
+void postorder(Tree root){ // Left - Right - Node
+	if(root != NULL){
+		postorder(root->left);
+		postorder(root->right);
+		cout<<root->data<<" ";
+	}
+}
+
+main(){
+	Tree root = NULL;
+	int value, chooice;
+	insert(10,root);
+	insert(7,root);
+	insert(9,root);
+	insert(21,root);
+	insert(30,root);
+	insert(5,root);
+	insert(8,root);
+	insert(15,root);
+	cout<<"LRN\n";
+	inorder(root);
+	cout<<"\nNLR\n";
+	preorder(root);
+	cout<<"\nLRN\n";
+	postorder(root);
 	
 }
 
