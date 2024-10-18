@@ -1,0 +1,12 @@
+{
+  "name": "datastructureandalgorithms",
+  "version": "1.0.0",
+  "description": "Dưới đây là tổng hợp toàn bộ kiến thức về **cấu trúc dữ liệu** và **giải thuật**, bao gồm các khái niệm cơ bản và nâng cao mà bạn cần nắm vững để chuẩn bị cho các bài thi **coding interview** của các công ty lớn như **Google**, **Meta (Facebook)**, **Amazon**, và các công ty công nghệ khác.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

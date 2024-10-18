@@ -66,6 +66,17 @@ int dem_k(int k, List F){
 	}
 	return cnt;
 }
+int* tim_gt(int gt, List F) {
+    List p = F; 
+    while (p != nullptr) {  
+        if (p->data == gt) {  
+            return &(p->data); 
+        }
+        p = p->next; 
+    }
+    return nullptr;  
+}
+
 int dem_ds(List F){
 	if(F == nullptr) return 0;
 	int cnt = 0;
@@ -132,6 +143,7 @@ int main(){
 	}else{
 		cout<<"\nNo";
 	}
+	cout<<"\n"<<tim_gt(5,F);
 //	delFirst(F);delFirst(F);
 //	printF(F);
 //	delLast(F);
