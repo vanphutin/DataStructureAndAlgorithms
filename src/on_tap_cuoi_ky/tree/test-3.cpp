@@ -61,66 +61,66 @@ bool searchTree(int key, Tree root){
 		return searchTree(key, root->right);
 	}
 }
-//Tree findMin(Tree root) {
-//    while (root->left != nullptr) root = root->left;
-//    return root;
-//}
-//Tree deleteNode(Tree root, int x) {
-//    if (root == nullptr) return root;
-//    if (x < root->data) {
-//        root->left = deleteNode(root->left, x);
-//    } else if (x > root->data) {
-//        root->right = deleteNode(root->right, x);
-//    } else {
-//        if (root->left == nullptr) {
-//            Tree temp = root->right;
-//            delete root;
-//            return temp;
-//        } else if (root->right == nullptr) {
-//            Tree temp = root->left;
-//            delete root;
-//            return temp;
-//        }
-//        Tree temp = findMin(root->right);  // Tìm nút nh? nh?t ? nhánh ph?i
-//        root->data = temp->data;
-//        root->right = deleteNode(root->right, temp->data);
-//    }
-//    return root;
-//}
-
-Tree findMin(Tree root){
-	while(root->left != nullptr){
-		root = root->left;
-	}
-	return root;
-}
-
-Tree deleteNode(Tree root, int x){
-	if(root == nullptr) return root;
+	//Tree findMin(Tree root) {
+	//    while (root->left != nullptr) root = root->left;
+	//    return root;
+	//}
+	//Tree deleteNode(Tree root, int x) {
+	//    if (root == nullptr) return root;
+	//    if (x < root->data) {
+	//        root->left = deleteNode(root->left, x);
+	//    } else if (x > root->data) {
+	//        root->right = deleteNode(root->right, x);
+	//    } else {
+	//        if (root->left == nullptr) {
+	//            Tree temp = root->right;
+	//            delete root;
+	//            return temp;
+	//        } else if (root->right == nullptr) {
+	//            Tree temp = root->left;
+	//            delete root;
+	//            return temp;
+	//        }
+	//        Tree temp = findMin(root->right);  // Tìm nút nh? nh?t ? nhánh ph?i
+	//        root->data = temp->data;
+	//        root->right = deleteNode(root->right, temp->data);
+	//    }
+	//    return root;
+	//}
 	
-	// tim
-	if(x < root->data){
-		root->left = deleteNode(root->left, x);
-	}else if(x > root->data){
-		root->right = deleteNode(root->right, x);
-	}else{
-		if(root->left == nullptr){
-			Tree temp = root->right;
-			delete root;
-			return temp;
-		}else if(root->right == nullptr){
-			Tree temp = root->left;
-			delete root;
-			return temp;
+	Tree findMin(Tree root){
+		while(root->left != nullptr){
+			root = root->left;
 		}
-		Tree temp = findMin(root->right);
-		root->data = temp->data;
-		root->right = deleteNode(root->right, temp->data);
+		return root;
 	}
-	return root;
-}
-
-
+	
+	Tree deleteNode(Tree root, int x){
+		if(root == nullptr) return root;
+		
+		// tim
+		if(x < root->data){
+			root->left = deleteNode(root->left, x);
+		}else if(x > root->data){
+			root->right = deleteNode(root->right, x);
+		}else{
+			if(root->left == nullptr){
+				Tree temp = root->right;
+				delete root;
+				return temp;
+			}else if(root->right == nullptr){
+				Tree temp = root->left;
+				delete root;
+				return temp;
+			}
+			Tree temp = findMin(root->right);
+			root->data = temp->data;
+			root->right = deleteNode(root->right, temp->data);
+		}
+		return root;
+	}
+	
+	
 
 
 

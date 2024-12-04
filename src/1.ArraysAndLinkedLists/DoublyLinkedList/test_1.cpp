@@ -85,6 +85,7 @@ void delVal(int k, List &F, List &L){
 				p->prev->next = p->next;
 				p->next->prev = p->prev;
 			}
+			delete p;
 		}
 		p = nextSav;
 	}
