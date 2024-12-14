@@ -15,8 +15,11 @@
 *.js
 */*.js
 **/*.js
-*.exe
 
+#skip file exe
+*.exe
+*/*.exe
+**/*.exe
 
 # misc
 .DS_Store
