@@ -4,6 +4,7 @@
 /node_modules
 /nbproject
 /.pnp
+/out
 .pnp.js
 
 # testing
