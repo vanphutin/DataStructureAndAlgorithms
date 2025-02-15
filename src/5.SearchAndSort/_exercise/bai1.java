@@ -1,7 +1,6 @@
-
+// [Sắp xếp - Tìm Kiếm]. Bài 1. Các số khác nhau trong mảng
 import java.util.HashSet;
 import java.util.Set;
-
 class Solution{
 
     public static int bai1(int[] nums){
