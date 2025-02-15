@@ -1,8 +1,8 @@
 
+// [Sắp xếp - Tìm Kiếm]. Bài 12. Khiêu vũ
 import java.util.Arrays;
 import java.util.Collections;
 
-// [Sắp xếp - Tìm Kiếm]. Bài 12. Khiêu vũ
 
 class Solution{
     public static int bai12(Integer[] nums1,Integer[] nums2){
