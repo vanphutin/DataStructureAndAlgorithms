@@ -34,7 +34,7 @@ function generatePartitions(n: number): number[][] {
 
   khoiTao();
   while (!isFinal) {
-    result.push(a.slice(1, cnt + 1)); // Lưu phân hoạch hiện tại
+    result.push(a.slice(1, cnt + 1));
     sinh();
   }
 
