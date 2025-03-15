@@ -5,7 +5,6 @@
 function bai6(n: number): string[] {
   let arr = Array.from({ length: n }, (_, i) => n - i);
   let result: string[] = [];
-
   function savePermutation(): void {
     result.push(arr.join(" "));
   }
