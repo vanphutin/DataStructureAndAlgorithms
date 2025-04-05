@@ -1,5 +1,5 @@
 export class Stack<T> {
-  private items: T[] = [];
+  public items: T[] = [];
 
   // Thêm phần tử vào stack
   push(item: T): void {
