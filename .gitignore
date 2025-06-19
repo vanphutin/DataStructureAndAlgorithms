@@ -6,6 +6,7 @@
 /.pnp
 /out
 .pnp.js
+/exe
 
 # testing
 /coverage

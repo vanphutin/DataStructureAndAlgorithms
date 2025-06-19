@@ -5,7 +5,7 @@
       "name": "Debug Active C++ File",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+      "program": "${workspaceFolder}/exe/${fileBasenameNoExtension}.exe",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

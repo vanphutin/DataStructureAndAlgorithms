@@ -4,17 +4,14 @@
     {
       "label": "Build Active C++ File",
       "type": "shell",
-      "command": "g++", // Đổi từ gcc thành g++
+      "command": "g++",
       "args": [
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.exe"
+        "${workspaceFolder}/exe/${fileBasenameNoExtension}.exe"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "group": "build",
       "problemMatcher": ["$gcc"],
       "detail": "Task to build the active C++ file"
     }
